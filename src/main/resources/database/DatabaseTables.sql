@@ -21,20 +21,22 @@ title varchar(100) not null unique ,
 description varchar(200) not null );
 
 create table job (
-id int auto_increment primary key ,
+id  serial primary key ,
 title varchar(50) not null ,
-companyName varchar(50) not null ,
-jobDescription varchar(500) not null ,
+company_name varchar(50) not null ,
+job_description varchar(500) not null ,
 skills varchar(500) not null ,
-jobType varchar(100) not null ,
-salaryRange varchar(100) not null ,
+job_type varchar(100) not null ,
+salary_range varchar(100) not null ,
 experience varchar(100) not null ,
 street varchar(100) not null ,
 city varchar(100) not null ,
-pincode varchar(100) not null ,
+pin_code varchar(100) not null ,
 country varchar(100) not null ,
-logoPath varchar(100) not null ,
-jobCategoryId int references job_category(id));
+logo_path varchar(100) not null ,
+jobCategory_Id int references job_category(id),
+employer_id int references employer(id)
+);
 
 
 create table employee(
