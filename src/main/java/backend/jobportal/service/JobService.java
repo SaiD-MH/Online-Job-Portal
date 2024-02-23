@@ -18,5 +18,6 @@ public interface JobService {
 
     String deleteJob(int employerId , int jobId);
 
+    JobResponse getJobByJobId(int jobId);
 
 }

@@ -93,18 +93,11 @@ CREATE TABLE qualification (
     id serial PRIMARY KEY,
     degree varchar(100) not null ,
     start_date date not null ,
-    end_date date not null
+    end_date date not null,
+    employee_id int references employee(id)
+
+
 );
-
-
-
-
-CREATE TABLE employee_qualifications (
-    id serial PRIMARY KEY,
-    employee_id int references employee(id) ,
-    qualification_id int references qualification(id)
-);
-
 
 
 CREATE TABLE work_experience(

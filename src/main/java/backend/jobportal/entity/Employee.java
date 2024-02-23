@@ -1,13 +1,15 @@
 package backend.jobportal.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "employee")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
@@ -37,5 +39,9 @@ public class Employee {
     private String state;
     @Column(name = "street")
     private String street;
+    @Column(name = "register_date")
+    private Date registerDate;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Qualification> qualifications;
 
 }

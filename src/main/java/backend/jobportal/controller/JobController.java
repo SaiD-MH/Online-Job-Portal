@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/employers")
+@RequestMapping("/api/jobs")
 public class JobController {
 
     private JobService jobService;
@@ -27,32 +27,16 @@ public class JobController {
     }
 
 
-    @PostMapping(value = "/{employerId}/jobs", consumes = {"*/*"})
-    public ResponseEntity<String> createJob(@ModelAttribute JobDto jobDto,
-                                            @PathVariable("employerId") int employerId)
-            throws IOException {
+    @GetMapping("/{jobId}")
+    public ResponseEntity<JobResponse> getJobByJobId(@PathVariable("jobId") int jobId) {
 
-        return new ResponseEntity<>(jobService.createJob(jobDto, employerId), HttpStatus.CREATED);
-
+        return ResponseEntity.ok(jobService.getJobByJobId(jobId));
     }
 
 
-    @GetMapping(value = "/{employerId}/jobs")
-    public ResponseEntity<List<JobResponse>> getAllJobsByEmployer(@PathVariable("employerId") int employerId) {
-        return ResponseEntity.ok(jobService.findByAllJobsByEmployerId(employerId));
-    }
-
-    @GetMapping("/jobs")
+    @GetMapping
     public ResponseEntity<List<JobResponse>> getAllJobs() {
         return ResponseEntity.ok(jobService.getAllJobs());
-    }
-
-    @DeleteMapping({"/{employerId}/jobs/{jobId}"})
-    public ResponseEntity<String> deleteJob(@PathVariable("employerId") int employerId,
-                                            @PathVariable("jobId") int jobId) {
-
-        return ResponseEntity.ok(jobService.deleteJob(employerId, jobId));
-
     }
 
 

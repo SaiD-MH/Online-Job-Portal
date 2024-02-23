@@ -11,6 +11,7 @@ import backend.jobportal.repository.JobCategoryRepository;
 import backend.jobportal.repository.JobRepository;
 import backend.jobportal.service.JobService;
 import backend.jobportal.utils.AppConstant;
+import backend.jobportal.utils.SaveToDisk;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -52,10 +53,10 @@ public class JobServiceImpl implements JobService {
         byte[] content = companyLogo.getBytes();
         Path fullPath = Paths.get(AppConstant.PathToSaveLogo + companyLogo.getOriginalFilename());
 
-        //saveLogo(content, fullPath);
 
-        companyLogo.transferTo(fullPath);
+        //companyLogo.transferTo(fullPath);
 
+        SaveToDisk.saveFile(companyLogo, fullPath);
 
         Job job = mapToJob(jobDto);
         job.setLogoPath(fullPath.toString());
@@ -100,19 +101,16 @@ public class JobServiceImpl implements JobService {
         return "Job Deleted Successfully";
     }
 
+    @Override
+    public JobResponse getJobByJobId(int jobId) {
 
-    private void saveLogo(byte[] bytes, String fullPath) throws IOException {
+        Job job = jobRepository.findById(jobId).orElseThrow(
+                () -> new ResourceNotFoundException("Job", "id", jobId)
+        );
 
-        Path path = Path.of(fullPath);
-        Files.write(path, bytes);
-
+        return mapToJobDto(job);
     }
 
-
-    private Job mapToJob(JobDto jobDto) {
-        Job job = modelMapper.map(jobDto, Job.class);
-        return job;
-    }
 
     private Employer checkEmployerExist(int employerId) {
 
@@ -130,12 +128,26 @@ public class JobServiceImpl implements JobService {
         return jobCategory;
     }
 
+
     private Job checkJobExist(int jobId) {
 
         return jobRepository.findById(jobId).orElseThrow(
                 () -> new ResourceNotFoundException("Jobs", "id", jobId)
         );
 
+    }
+
+
+    private Job mapToJob(JobDto jobDto) {
+        Job job = modelMapper.map(jobDto, Job.class);
+        return job;
+    }
+
+    private JobResponse mapToJobDto(Job job) {
+
+        JobResponse jobResponse = modelMapper.map(job, JobResponse.class);
+        jobResponse.setCompanyLogo(Path.of(job.getLogoPath()).getFileName().toString());
+        return jobResponse;
     }
 
 
