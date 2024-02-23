@@ -30,4 +30,5 @@ public class EmployeeDto {
     private String street;
     private Date registerDate;
     private List<QualificationDto> qualifications;
+    private List<WorkExperienceDto> workExperiences;
 }
