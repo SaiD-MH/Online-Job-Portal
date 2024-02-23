@@ -1,12 +1,14 @@
 package backend.jobportal.payload;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class JobDto {
+@AllArgsConstructor
+public class JobResponse {
 
     private int jobId;
     private String title;
@@ -20,10 +22,8 @@ public class JobDto {
     private String city;
     private String PinCode;
     private String country;
-    private MultipartFile companyLogo;
+    private String  companyLogo;
     private String jobCategory;
     private int employerId;
-
-
 
 }

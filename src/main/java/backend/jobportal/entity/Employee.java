@@ -1,9 +1,15 @@
 package backend.jobportal.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employee")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
 
@@ -31,12 +37,5 @@ public class Employee {
     private String state;
     @Column(name = "street")
     private String street;
-
-
-
-
-
-
-
 
 }

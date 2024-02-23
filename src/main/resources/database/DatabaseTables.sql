@@ -34,8 +34,8 @@ city varchar(100) not null ,
 pin_code varchar(100) not null ,
 country varchar(100) not null ,
 logo_path varchar(100) not null ,
-jobCategory_Id int references job_category(id),
-employer_id int references employer(id)
+jobCategory_Id int references job_category(id) not null,
+employer_id int references employer(id) not null
 );
 
 
