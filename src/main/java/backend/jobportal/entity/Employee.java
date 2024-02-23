@@ -31,7 +31,7 @@ public class Employee {
     private String country;
     @Column(name = "city")
     private String city;
-    @Column(name = "pincode")
+    @Column(name = "pin_code")
     private String pinCode;
     @Column(name = "state")
     private String state;
