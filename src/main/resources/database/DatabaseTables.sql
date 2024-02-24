@@ -66,7 +66,7 @@ CREATE TABLE employee_profile (
     linkedin varchar(100) not null ,
     bio varchar(500) not null ,
     website varchar(100) not null,
-    resume_id int references resume(id),
+    resume_path varchar(200) not null,
     employee_id int references employee(id)
 );
 

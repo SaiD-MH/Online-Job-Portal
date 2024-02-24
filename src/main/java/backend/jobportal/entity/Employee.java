@@ -59,4 +59,7 @@ public class Employee {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<WorkExperience> workExperiences;
 
+
+    @OneToOne(mappedBy = "employee" )
+    private EmployeeProfileInfo employeeProfileInfo;
 }

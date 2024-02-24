@@ -3,9 +3,8 @@ package backend.jobportal.controller;
 import backend.jobportal.entity.Employee;
 import backend.jobportal.entity.Employer;
 import backend.jobportal.entity.Qualification;
-import backend.jobportal.payload.EmployeeDto;
-import backend.jobportal.payload.QualificationDto;
-import backend.jobportal.payload.WorkExperienceDto;
+import backend.jobportal.payload.*;
+import backend.jobportal.service.EmployeeProfileService;
 import backend.jobportal.service.EmployeeService;
 import backend.jobportal.service.QualificationService;
 import backend.jobportal.service.WorkExperienceService;
@@ -13,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -22,13 +22,15 @@ public class EmployeeController {
     private EmployeeService employeeService;
     private QualificationService qualificationService;
     private WorkExperienceService workExperienceService;
+    private EmployeeProfileService employeeProfileService;
 
 
     public EmployeeController(EmployeeService employeeService, QualificationService qualificationService,
-                              WorkExperienceService workExperienceService) {
+                              WorkExperienceService workExperienceService, EmployeeProfileService employeeProfileService) {
         this.employeeService = employeeService;
         this.qualificationService = qualificationService;
         this.workExperienceService = workExperienceService;
+        this.employeeProfileService = employeeProfileService;
     }
 
     @PostMapping
@@ -52,6 +54,17 @@ public class EmployeeController {
     ) {
 
         return new ResponseEntity<>(workExperienceService.createWorkExperience(workExperience, employeeId), HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/{employeeId}/profileDetails", consumes = {"*/*"})
+    public ResponseEntity<EmployeeProfileResponse>
+    addProfileDetails(@ModelAttribute EmployeeProfileDto employeeProfileDto,
+                      @PathVariable("employeeId") int employeeId
+    ) throws IOException {
+
+        return new ResponseEntity<>(employeeProfileService.createEmployeeProfile(employeeProfileDto, employeeId)
+                , HttpStatus.CREATED);
+
     }
 
 

@@ -31,4 +31,5 @@ public class EmployeeDto {
     private Date registerDate;
     private List<QualificationDto> qualifications;
     private List<WorkExperienceDto> workExperiences;
+    private EmployeeProfileResponse employeeProfile;
 }
