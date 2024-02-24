@@ -111,6 +111,13 @@ public class JobServiceImpl implements JobService {
         return mapToJobDto(job);
     }
 
+    @Override
+    public List<JobResponse> searchJob(String jobCategory, String jobType, String country) {
+
+
+        return jobRepository.searchJobs(jobCategory, jobType, country);
+    }
+
 
     private Employer checkEmployerExist(int employerId) {
 

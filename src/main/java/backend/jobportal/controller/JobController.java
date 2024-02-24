@@ -40,4 +40,17 @@ public class JobController {
     }
 
 
+    @GetMapping("/search")
+    public ResponseEntity<List<JobResponse>> searchJobs(@RequestParam(value = "jobCategory", required = false, defaultValue = "0000000") String jobCategory,
+                                                        @RequestParam(value = "jobType", required = false, defaultValue = "000000000") String jobType,
+                                                        @RequestParam(value = "country", required = false, defaultValue = "000000000") String country
+
+
+    ) {
+
+        return ResponseEntity.ok(jobService.searchJob(jobCategory, jobType,country));
+
+    }
+
+
 }

@@ -42,22 +42,11 @@ public class EmployeeSkillServiceImpl implements EmployeeSkillService {
 
     private EmployeeSkillDto mapToDto(EmployeeSkill employeeSkill) {
 
-        /*EmployeeSkillDto employeeSkillDto = new EmployeeSkillDto();
-
-        employeeSkillDto.setExperience(employeeSkill.getExperience());
-        employeeSkillDto.setId(employeeSkill.getId());
-        employeeSkillDto.setName(employeeSkill.getName());
-*/
         return modelMapper.map(employeeSkill, EmployeeSkillDto.class);
     }
 
     private EmployeeSkill mapToEntity(EmployeeSkillDto employeeSkillDto) {
 
-      /*  EmployeeSkill employeeSkill = new EmployeeSkill();
-
-        employeeSkill.setExperience(employeeSkillDto.getExperience());
-        employeeSkill.setName(employeeSkillDto.getName());
-*/
         return modelMapper.map(employeeSkillDto, EmployeeSkill.class);
     }
 
