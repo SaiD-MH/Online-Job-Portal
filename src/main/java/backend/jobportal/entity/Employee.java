@@ -60,6 +60,10 @@ public class Employee {
     private List<WorkExperience> workExperiences;
 
 
-    @OneToOne(mappedBy = "employee" )
+    @OneToOne(mappedBy = "employee")
     private EmployeeProfileInfo employeeProfileInfo;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<EmployeeSkill> employeeSkills;
+
 }

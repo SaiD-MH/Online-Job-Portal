@@ -32,4 +32,5 @@ public class EmployeeDto {
     private List<QualificationDto> qualifications;
     private List<WorkExperienceDto> workExperiences;
     private EmployeeProfileResponse employeeProfile;
+    private List<EmployeeSkillDto> employeeSkills;
 }

@@ -53,11 +53,6 @@ state varchar(100) not null ,
 street varchar(100) not null
 );
 
-CREATE TABLE resume (
-    id serial PRIMARY KEY,
-    path VARCHAR(255) not null
-);
-
 
 CREATE TABLE employee_profile (
     id  serial PRIMARY KEY,
@@ -75,16 +70,9 @@ CREATE TABLE employee_profile (
 CREATE TABLE skill (
     id serial PRIMARY KEY,
     name varchar(100) not null ,
-    experience int not null
-
-);
-
-
-
-CREATE TABLE employee_skills (
-    id serial PRIMARY KEY,
-    skill_id int references skill(id) ,
+    experience int not null,
     employee_id int references employee(id)
+
 );
 
 
@@ -109,8 +97,3 @@ CREATE TABLE work_experience(
 );
 
 
-CREATE TABLE employee_experiences (
-    id  serial PRIMARY KEY,
-    employee_id int references employee(id) ,
-    experience_id int references work_experience(id)
-);

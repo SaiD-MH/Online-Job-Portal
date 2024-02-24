@@ -4,10 +4,7 @@ import backend.jobportal.entity.Employee;
 import backend.jobportal.entity.Employer;
 import backend.jobportal.entity.Qualification;
 import backend.jobportal.payload.*;
-import backend.jobportal.service.EmployeeProfileService;
-import backend.jobportal.service.EmployeeService;
-import backend.jobportal.service.QualificationService;
-import backend.jobportal.service.WorkExperienceService;
+import backend.jobportal.service.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,14 +20,17 @@ public class EmployeeController {
     private QualificationService qualificationService;
     private WorkExperienceService workExperienceService;
     private EmployeeProfileService employeeProfileService;
+    private EmployeeSkillService employeeSkillService;
 
 
     public EmployeeController(EmployeeService employeeService, QualificationService qualificationService,
-                              WorkExperienceService workExperienceService, EmployeeProfileService employeeProfileService) {
+                              WorkExperienceService workExperienceService, EmployeeProfileService employeeProfileService,
+                              EmployeeSkillService employeeSkillService) {
         this.employeeService = employeeService;
         this.qualificationService = qualificationService;
         this.workExperienceService = workExperienceService;
         this.employeeProfileService = employeeProfileService;
+        this.employeeSkillService = employeeSkillService;
     }
 
     @PostMapping
@@ -67,6 +67,15 @@ public class EmployeeController {
 
     }
 
+    @PostMapping(value = "/{employeeId}/skills", consumes = {"*/*"})
+    public ResponseEntity<EmployeeSkillDto>
+    addProfileDetails(@RequestBody EmployeeSkillDto employeeSkillDto,
+                      @PathVariable("employeeId") int employeeId
+    ) throws IOException {
+
+        return new ResponseEntity<>(employeeSkillService.createSkill(employeeSkillDto, employeeId)
+                , HttpStatus.CREATED);
+    }
 
     @GetMapping
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
