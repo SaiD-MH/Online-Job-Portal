@@ -107,3 +107,11 @@ CREATE TABLE job_application (
 
 );
 
+select * from job
+join job_application on job.id = job_application.job_id
+where job.employer_id=2;
+
+SELECT *
+FROM job
+JOIN job_application ON job.id = job_application.job_id
+WHERE job.employer_id = 3;

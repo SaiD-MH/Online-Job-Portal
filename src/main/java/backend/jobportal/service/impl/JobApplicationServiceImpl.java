@@ -3,7 +3,9 @@ package backend.jobportal.service.impl;
 import backend.jobportal.entity.Employee;
 import backend.jobportal.entity.Job;
 import backend.jobportal.entity.JobApplication;
+import backend.jobportal.exception.JobPortalException;
 import backend.jobportal.exception.ResourceNotFoundException;
+import backend.jobportal.payload.EmployerApplicationsJobsDto;
 import backend.jobportal.payload.JobApplicationDto;
 import backend.jobportal.payload.JobResponse;
 import backend.jobportal.repository.EmployeeRepository;
@@ -15,9 +17,11 @@ import static backend.jobportal.utils.AppConstant.JOB_APPLICATION_STATUS.*;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -98,6 +102,36 @@ public class JobApplicationServiceImpl implements JobApplicationService {
         jobApplicationRepository.save(jobApplication);
 
         return "Job Application Cancel Successfully";
+
+    }
+
+    @Override
+    public List<EmployerApplicationsJobsDto> getAllApplicationsByEmployer(int employerId) {
+
+        return jobApplicationRepository.findAllApplicationForEmployer(employerId).stream()
+                .map(
+                        (job) -> {
+                            job.setCompanyLogo(Paths.get(job.getCompanyLogo()).getFileName().toString());
+                            return job;
+                        }
+
+                ).collect(Collectors.toList());
+    }
+
+    @Override
+    public String updateApplicationStatusByEmployer(int applicationId, String status) {
+
+        JobApplication jobApplication = checkJobApplicationExistence(applicationId);
+
+        if (jobApplication.getStatus().equals(CANCELED.toString())) {
+            throw new JobPortalException(HttpStatus.BAD_REQUEST,
+                    "This Application is Already Canceled , You can't Change it");
+        }
+
+        jobApplication.setStatus(status);
+        jobApplicationRepository.save(jobApplication);
+
+        return "Application Status Changed Successfully";
 
     }
 

@@ -1,5 +1,6 @@
 package backend.jobportal.service;
 
+import backend.jobportal.payload.EmployerApplicationsJobsDto;
 import backend.jobportal.payload.JobApplicationDto;
 import org.springframework.http.ResponseEntity;
 
@@ -12,4 +13,8 @@ public interface JobApplicationService {
 
 
     String cancelApplication(int employeeId, int jobId ,int applicationId);
+
+    List<EmployerApplicationsJobsDto> getAllApplicationsByEmployer(int employerId);
+
+    String updateApplicationStatusByEmployer(int applicationId,String status);
 }

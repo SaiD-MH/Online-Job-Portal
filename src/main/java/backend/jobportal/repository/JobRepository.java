@@ -35,4 +35,5 @@ public interface JobRepository extends JpaRepository<Job, Integer> {
     List<JobResponse> searchJobs(@Param("jobCategory") String jobCategory, @Param("jobType") String jobType, @Param("country") String country);
 
 
+
 }

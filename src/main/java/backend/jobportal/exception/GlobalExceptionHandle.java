@@ -28,6 +28,35 @@ public class GlobalExceptionHandle {
 
     }
 
+    @ExceptionHandler(JobPortalException.class)
+    public ResponseEntity<ErrorDto> BlogAppExceptionHandler(
+            JobPortalException exception,
+            WebRequest webRequest
+    ) {
 
+        return new ResponseEntity<>(
+
+                new ErrorDto(exception.getMessage(), new Date(), webRequest.getDescription(false))
+                ,
+                HttpStatus.BAD_REQUEST
+        );
+
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorDto> globalExceptionHandling(
+            Exception exception,
+            WebRequest webRequest
+    ) {
+
+        return new ResponseEntity<>(
+
+                new ErrorDto(exception.getMessage(), new Date(),
+                        webRequest.getDescription(false))
+                ,
+                HttpStatus.INTERNAL_SERVER_ERROR
+        );
+
+    }
 
 }
