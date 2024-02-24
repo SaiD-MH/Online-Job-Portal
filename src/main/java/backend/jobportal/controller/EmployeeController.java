@@ -21,18 +21,22 @@ public class EmployeeController {
     private WorkExperienceService workExperienceService;
     private EmployeeProfileService employeeProfileService;
     private EmployeeSkillService employeeSkillService;
+    private JobApplicationService jobApplicationService;
 
 
     public EmployeeController(EmployeeService employeeService, QualificationService qualificationService,
                               WorkExperienceService workExperienceService, EmployeeProfileService employeeProfileService,
-                              EmployeeSkillService employeeSkillService) {
+                              EmployeeSkillService employeeSkillService, JobApplicationService jobApplicationService) {
         this.employeeService = employeeService;
         this.qualificationService = qualificationService;
         this.workExperienceService = workExperienceService;
         this.employeeProfileService = employeeProfileService;
         this.employeeSkillService = employeeSkillService;
+        this.jobApplicationService = jobApplicationService;
     }
 
+
+    // Employee Register Methods
     @PostMapping
     public Employee createEmployee(@RequestBody Employee employee) {
 
@@ -40,6 +44,8 @@ public class EmployeeController {
 
     }
 
+
+    // Employee Profile Methods
     @PostMapping("/{employeeId}/qualifications")
     public ResponseEntity<QualificationDto> addQualification(@RequestBody QualificationDto qualification
             , @PathVariable("employeeId") int employeeId
@@ -89,6 +95,35 @@ public class EmployeeController {
     @GetMapping("/{employeeId}")
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("employeeId") int employeeId) {
         return ResponseEntity.ok(employeeService.getEmployeeById(employeeId));
+    }
+
+
+    // Job Method Related to Employee Methods
+
+    @PostMapping("/{employeeId}/jobs/{jobId}/apply")
+    public ResponseEntity<String> applyForJob(@PathVariable("employeeId") int employeeId,
+                                              @PathVariable("jobId") int jobId) {
+
+        return new ResponseEntity<>(jobApplicationService.applyJob(employeeId, jobId), HttpStatus.CREATED);
+
+    }
+
+    @PostMapping("/{employeeId}/jobs/{jobId}/yourApplications/{applicationId}/cancel")
+    public ResponseEntity<String> cancelJobApplication(@PathVariable("employeeId") int employeeId,
+                                                       @PathVariable("jobId") int jobId,
+                                                       @PathVariable("applicationId") int applicationId
+
+    ) {
+
+        return ResponseEntity.ok(jobApplicationService.cancelApplication(employeeId, jobId , applicationId));
+
+    }
+
+
+    @GetMapping("/{employeeId}/jobs/yourApplications")
+    public ResponseEntity<List<JobApplicationDto>> getAllJobApplicationByEmployee(
+            @PathVariable("employeeId") int employeeId) {
+        return ResponseEntity.ok(jobApplicationService.getAllApplicationsByEmployee(employeeId));
     }
 
 

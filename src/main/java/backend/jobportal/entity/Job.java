@@ -42,7 +42,7 @@ public class Job {
     @Column(name = "logo_path")
     private String logoPath;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "jobcategory_id")
     private JobCategory jobCategory;
 

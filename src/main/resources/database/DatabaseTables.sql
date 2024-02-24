@@ -97,3 +97,13 @@ CREATE TABLE work_experience(
 );
 
 
+CREATE TABLE job_application (
+
+    id serial PRIMARY KEY,
+    status varchar(20) not null ,
+    applied_date date not null ,
+    employee_id int references employee(id),
+    job_id int references job(id)
+
+);
+

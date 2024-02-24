@@ -49,12 +49,7 @@ public class JobServiceImpl implements JobService {
 
         MultipartFile companyLogo = jobDto.getCompanyLogo();
 
-
-        byte[] content = companyLogo.getBytes();
         Path fullPath = Paths.get(AppConstant.PathToSaveLogo + companyLogo.getOriginalFilename());
-
-
-        //companyLogo.transferTo(fullPath);
 
         SaveToDisk.saveFile(companyLogo, fullPath);
 
