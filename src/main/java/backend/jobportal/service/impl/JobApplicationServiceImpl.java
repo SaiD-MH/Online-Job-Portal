@@ -135,6 +135,13 @@ public class JobApplicationServiceImpl implements JobApplicationService {
 
     }
 
+    @Override
+    public  List<EmployerApplicationsJobsDto> getAllApplications() {
+
+        return jobApplicationRepository.findAllApplication();
+
+    }
+
     private JobResponse mapToJobDto(Job job) {
 
         JobResponse jobResponse = modelMapper.map(job, JobResponse.class);

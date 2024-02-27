@@ -17,4 +17,6 @@ public interface JobApplicationService {
     List<EmployerApplicationsJobsDto> getAllApplicationsByEmployer(int employerId);
 
     String updateApplicationStatusByEmployer(int applicationId,String status);
+
+    List<EmployerApplicationsJobsDto> getAllApplications();
 }

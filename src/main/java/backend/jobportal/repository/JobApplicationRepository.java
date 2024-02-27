@@ -25,4 +25,15 @@ public interface JobApplicationRepository extends JpaRepository<JobApplication, 
     List<EmployerApplicationsJobsDto> findAllApplicationForEmployer(@Param("employerId") int employerId);
 
 
+
+    @Query(
+            "SELECT NEW backend.jobportal.payload.EmployerApplicationsJobsDto(j.companyName, j.logoPath, " +
+                    "j.title,j.jobCategory.title, j.jobType,j.employer.firstName, j.country, ja.id,ja.status) " +
+                    "FROM Job j " +
+                    "JOIN JobApplication ja ON ja.job.id = j.id "
+
+    )
+    List<EmployerApplicationsJobsDto> findAllApplication();
+
+
 }
