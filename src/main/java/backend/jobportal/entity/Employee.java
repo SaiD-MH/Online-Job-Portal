@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "employee")
@@ -65,5 +66,14 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<EmployeeSkill> employeeSkills;
+
+
+    @JoinTable(
+            name="employee_roles" ,
+            joinColumns =@JoinColumn(name = "employee_id" , referencedColumnName = "id") ,
+            inverseJoinColumns = @JoinColumn(name = "role_id" , referencedColumnName = "id")
+    )
+    private Set<Role> roles;
+
 
 }

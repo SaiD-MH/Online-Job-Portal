@@ -115,3 +115,19 @@ SELECT *
 FROM job
 JOIN job_application ON job.id = job_application.job_id
 WHERE job.employer_id = 3;
+
+
+create table role (
+id serial primary key ,
+name varchar(50) unique not null
+);
+
+create table employee_roles(
+employee_id int references employee(id),
+role_id int references role(id)
+);
+
+create table employer_roles(
+employer_id int references employer(id),
+role_id int references role(id)
+);
