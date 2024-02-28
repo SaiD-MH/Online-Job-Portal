@@ -68,10 +68,11 @@ public class Employee {
     private List<EmployeeSkill> employeeSkills;
 
 
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name="employee_roles" ,
-            joinColumns =@JoinColumn(name = "employee_id" , referencedColumnName = "id") ,
-            inverseJoinColumns = @JoinColumn(name = "role_id" , referencedColumnName = "id")
+            name = "employee_roles",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles;
 
