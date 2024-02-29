@@ -1,6 +1,8 @@
 package backend.jobportal.config;
 
 
+import backend.jobportal.filter.JwtAuthenticationFilter;
+import backend.jobportal.security.JwtAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,12 +26,18 @@ public class JobPortalSecurityConfig {
 
     private UserDetailsService userDetailsService;
 
+    private JwtAuthenticationEntryPoint authenticationEntryPoint;
+
+    private JwtAuthenticationFilter authenticationFilter;
 
     @Autowired
-    public JobPortalSecurityConfig(UserDetailsService userDetailsService
+    public JobPortalSecurityConfig(UserDetailsService userDetailsService,
+                                   JwtAuthenticationEntryPoint authenticationEntryPoint,
+                                   JwtAuthenticationFilter authenticationFilter
     ) {
         this.userDetailsService = userDetailsService;
-
+        this.authenticationFilter = authenticationFilter;
+        this.authenticationEntryPoint = authenticationEntryPoint;
     }
 
     @Bean
@@ -38,16 +46,14 @@ public class JobPortalSecurityConfig {
 
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // don't create JSESSIONID
                 .authorizeHttpRequests((request) -> request
-
+                        .requestMatchers("/api/auth/**").permitAll()
                         .anyRequest().authenticated()
 
 
                 )
+                .exceptionHandling(ex -> ex.authenticationEntryPoint(authenticationEntryPoint));
 
-        ;
-
-
-
+        http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.formLogin(Customizer.withDefaults());
         http.httpBasic(Customizer.withDefaults());
@@ -59,7 +65,7 @@ public class JobPortalSecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
 
@@ -67,6 +73,5 @@ public class JobPortalSecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
-
 
 }

@@ -1,8 +1,9 @@
 package backend.jobportal.security;
 
 import backend.jobportal.entity.Employee;
+import backend.jobportal.entity.EmployeeRole;
 import backend.jobportal.entity.Employer;
-import backend.jobportal.entity.Role;
+import backend.jobportal.entity.EmployerRole;
 import backend.jobportal.exception.JobPortalException;
 import backend.jobportal.repository.EmployeeRepository;
 import backend.jobportal.repository.EmployerRepository;
@@ -44,7 +45,7 @@ public class JobPortalUserDetails implements UserDetailsService {
 
             List<GrantedAuthority> authorities = new ArrayList<>();
 
-            for (Role role : employee.getRoles()) {
+            for (EmployeeRole role: employee.getRoles()) {
 
 
                 authorities.add(new SimpleGrantedAuthority(role.getName()));
@@ -56,24 +57,24 @@ public class JobPortalUserDetails implements UserDetailsService {
         }
 
 
-//        Optional<Employer> employerOptional = employerRepository.findByEmail(username);
-//
-////        if (employerOptional.isPresent()) {
-////
-////            Employer employer = employerOptional.get();
-////
-////            List<GrantedAuthority> authorities = new ArrayList<>();
-////
-////            for (Role role : employer.getRoles()) {
-////
-////
-////                authorities.add(new SimpleGrantedAuthority(role.getName()));
-////
-////            }
-//
-//            return new org.springframework.security.core.userdetails
-//                    .User(employer.getEmail(), employer.getPassword(), authorities);
-//        }
+        Optional<Employer> employerOptional = employerRepository.findByEmail(username);
+
+        if (employerOptional.isPresent()) {
+
+            Employer employer = employerOptional.get();
+
+            List<GrantedAuthority> authorities = new ArrayList<>();
+
+            for (EmployerRole role : employer.getRoles()) {
+
+
+                authorities.add(new SimpleGrantedAuthority(role.getName()));
+
+            }
+
+            return new org.springframework.security.core.userdetails
+                    .User(employer.getEmail(), employer.getPassword(), authorities);
+        }
 
         throw new JobPortalException(HttpStatus.BAD_REQUEST, "Email Not Found");
     }

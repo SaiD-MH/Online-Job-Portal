@@ -38,12 +38,7 @@ public class Employer {
     private String state;
     @Column(name = "street")
     private String street;
-//
-//    @JoinTable(
-//            name = "employer_roles",
-//            joinColumns = @JoinColumn(name = "employer_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
-//    )
-//    private Set<Role> roles;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employer")
+    private Set<EmployerRole> roles;
 }

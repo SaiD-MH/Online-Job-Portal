@@ -1,11 +1,16 @@
 package backend.jobportal.payload;
 
+
 import lombok.Data;
 
 @Data
-public class LoginDto {
+public class SignUpDto {
 
+
+    private String name;
+    private String username;
     private String email;
     private String password;
+
 
 }
