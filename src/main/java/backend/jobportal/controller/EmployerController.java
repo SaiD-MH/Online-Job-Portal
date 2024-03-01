@@ -9,6 +9,7 @@ import backend.jobportal.repository.JobApplicationRepository;
 import backend.jobportal.service.EmployerService;
 import backend.jobportal.service.JobApplicationService;
 import backend.jobportal.service.JobService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/employers")
+@Tag(name = "REST APIs for Employer Resource")
 public class EmployerController {
 
     private EmployerService employerService;

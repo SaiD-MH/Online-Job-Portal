@@ -6,6 +6,7 @@ import backend.jobportal.payload.JobDto;
 import backend.jobportal.payload.JobResponse;
 import backend.jobportal.service.JobCategoryService;
 import backend.jobportal.service.JobService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobs")
+@Tag(name = "REST APIs for Job Resource")
 public class JobController {
 
     private JobService jobService;

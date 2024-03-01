@@ -1,6 +1,7 @@
 package backend.jobportal.service;
 
 import backend.jobportal.entity.JobCategory;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 

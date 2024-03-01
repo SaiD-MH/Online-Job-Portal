@@ -5,6 +5,7 @@ import backend.jobportal.entity.Employer;
 import backend.jobportal.entity.Qualification;
 import backend.jobportal.payload.*;
 import backend.jobportal.service.*;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
+@Tag(name = "REST APIs for Employee Resource")
 public class EmployeeController {
 
     private EmployeeService employeeService;
