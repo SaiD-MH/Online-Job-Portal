@@ -53,8 +53,7 @@ The Online Job Portal ensures efficient job management for employers and job see
 ### REST APIs for Auth
   ![REST APIs for Auth](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Auth.PNG)
   
-  **Description:**
-      - POST `/api/auth/login`   - Login and obtain JWT authentication token.
+       - POST `/api/auth/login`   - Login and obtain JWT authentication token.
        - POST `/api/auth/signin`  - Register a new user (Employer or Employee).
   
   ### REST APIs for Employer
