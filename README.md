@@ -61,8 +61,15 @@ The Online Job Portal ensures efficient job management for employers and job see
       - GET `/api/employers` List All Employers
       - GET `/api/employers/{employerId}/jobs` Get All Jobs Posted By Give employer ID
       - GET `/api/employers/{employerId}/myApplications` Get All Applications for Jobs Posted by Employer Id
-
-    REST APIs for Employer
+      - DELETE `/api/employers/{employerId}/jobs/{jobId}` Delete Job by Posted By Employer
+    
+  - REST APIs for Employee
+      - POST `/api/employees` Create new Employee
+      - POST `/api/employees/{employeeId}/profileDetails` Edit Employee Pofile Details
+      - POST `/api/employees/{employeeId}/skills` Edit Employee Skills
+      - POST `/api/employees/{employeeId}/qualifications` Edit Employee Qualifications
+        
+- 
 ## Setup Instructions
 
 1. Clone the repository:
