@@ -54,4 +54,13 @@ The Online Job Portal ensures efficient job management for employers and job see
 1. Clone the repository:
    ```bash
    git clone https://github.com/SaiD-MH/Online-Job-Portal.git
-  
+
+2. Open the backend project in your preferred IDE (e.g., Spring Tool Suite, IntelliJ IDEA)
+
+3. Configure database settings:
+  - Open src/main/resources/application.properties.
+  - Update the database URL, username, password, and other configurations as per your local setup.
+
+4. Run the application:
+  - Build and run the Spring Boot application.
+  - The application will be deployed locally at http://localhost:8080.
