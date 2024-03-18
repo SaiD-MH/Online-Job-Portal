@@ -81,13 +81,21 @@ The Online Job Portal ensures efficient job management for employers and job see
       - GET `/api/employees/{employeeId}` Get Employee By Id
       - GET `/api/employees/{employeeId}/jobs/yourApplications` Get Details  of application submitted by employee  
   
-  ### RREST APIs for Job Categories
+  ### REST APIs for Job Categories
   ![REST APIs for Job Categories](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Job%20Categories.PNG)
   
-       - POST   `/api/jobCategories` Create New Job Category
-       - GET    `/api/jobCategories` List All Job Categories
+       - POST   `/api/jobCategories`      Create New Job Category
+       - GET    `/api/jobCategories`      List All Job Categories
        - PUT    `/api/jobCategories/{id}` Update Existing Job Category
        - DELETE `/api/jobCategories/{id}` Delete Existing Job Category
+
+   ### REST APIs for Job
+  ![REST APIs for Job ](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Job.PNG)
+  
+      - Get `/api/jobs`         List All Jobs
+      - Get `/api/jobs/{jobId}` Get Job By Id
+      - Get `/api/jobs/search`  Search about Job by jobCategory & Location & Type (Part , Full) time
+      
 ## Setup Instructions
 
 1. Clone the repository:
