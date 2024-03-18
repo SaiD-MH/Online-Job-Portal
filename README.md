@@ -95,6 +95,12 @@ The Online Job Portal ensures efficient job management for employers and job see
       - Get `/api/jobs`         List All Jobs
       - Get `/api/jobs/{jobId}` Get Job By Id
       - Get `/api/jobs/search`  Search about Job by jobCategory & Location & Type (Part , Full) time
+
+   ### REST APIs for Job Application
+![REST APIs for Job Application ](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Job%20Application.PNG)
+  
+      - GET `/api/jobs/jobApplications` List All Applications
+      
       
 ## Setup Instructions
 
