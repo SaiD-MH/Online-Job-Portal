@@ -54,6 +54,15 @@ The Online Job Portal ensures efficient job management for employers and job see
       - POST `/api/auth/login`   - Login and obtain JWT authentication token.
       - POST `/api/auth/signin`  - Register a new user (Employer or Employee).
   
+  - REST APIs for Employer
+      - POST `/api/employers` Create new Employer
+      - POST `/api/employers/{employerId}/jobs` Create new Job
+      - POST `/api/employers/{employerId}/myApplications/{applicationId}` Update Application Status
+      - GET `/api/employers` List All Employers
+      - GET `/api/employers/{employerId}/jobs` Get All Jobs Posted By Give employer ID
+      - GET `/api/employers/{employerId}/myApplications` Get All Applications for Jobs Posted by Employer Id
+
+    REST APIs for Employer
 ## Setup Instructions
 
 1. Clone the repository:
