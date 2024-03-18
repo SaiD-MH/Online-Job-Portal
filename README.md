@@ -51,8 +51,8 @@ The Online Job Portal ensures efficient job management for employers and job see
 
 ## API's Endpoints
   - REST APIs for Auth
-      - POST '/api/auth/login'
-      - POST '/api/auth/signin'
+      - POST `/api/auth/login`   - Login and obtain JWT authentication token.
+      - POST '/api/auth/signin'  - Register a new user (Employer or Employee).
         
 ## Setup Instructions
 
