@@ -49,6 +49,11 @@ The Online Job Portal ensures efficient job management for employers and job see
    - View applied jobs and status
    - Cancel applied jobs
 
+## API's Endpoints
+  - REST APIs for Auth
+      - POST '/api/auth/login'
+      - POST '/api/auth/signin'
+        
 ## Setup Instructions
 
 1. Clone the repository:
@@ -64,3 +69,5 @@ The Online Job Portal ensures efficient job management for employers and job see
 4. Run the application:
     - Build and run the Spring Boot application.
     - The application will be deployed locally at http://localhost:8080.
+  
+
