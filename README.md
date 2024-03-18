@@ -68,7 +68,8 @@ The Online Job Portal ensures efficient job management for employers and job see
       - POST `/api/employees/{employeeId}/profileDetails` Edit Employee Pofile Details
       - POST `/api/employees/{employeeId}/skills` Edit Employee Skills
       - POST `/api/employees/{employeeId}/qualifications` Edit Employee Qualifications
-      - ![Online Job Portal]([online-job-portal.png](https://github.com/SaiD-MH/Online-Job-Portal/blob/main/src/main/resources/static/po.PNG?raw=true))
+      - ![Online Job Portal](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/po.PNG)
+
 
         
 - 
