@@ -57,7 +57,8 @@ The Online Job Portal ensures efficient job management for employers and job see
        - POST `/api/auth/signin`  - Register a new user (Employer or Employee).
   
   ### REST APIs for Employer
-      - ![REST APIs for Employer](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Employer.png)  
+  ![REST APIs for Employer](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Employer.png)  
+      
       - POST `/api/employers` Create new Employer
       - POST `/api/employers/{employerId}/jobs` Create new Job
       - POST `/api/employers/{employerId}/myApplications/{applicationId}` Update Application Status
@@ -67,7 +68,9 @@ The Online Job Portal ensures efficient job management for employers and job see
       - DELETE `/api/employers/{employerId}/jobs/{jobId}` Delete Job by Posted By Employer
     
   ### REST APIs for Employee
-      - ![REST APIs for Employee](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Employer.png)
+    
+  ![REST APIs for Employee](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Employer.png)
+        
       - POST `/api/employees` Create new Employee
       - POST `/api/employees/{employeeId}/profileDetails` Edit Employee Pofile Details
       - POST `/api/employees/{employeeId}/skills` Edit Employee Skills
