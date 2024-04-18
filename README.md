@@ -48,6 +48,8 @@ The Online Job Portal ensures efficient job management for employers and job see
    - View and update profile information
    - View applied jobs and status
    - Cancel applied jobs
+## DB_SCHEMA
+  ![DB_SCHEMA](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/database/DATABASE%20SCHEMA.png)
 
 ## API's Endpoints
   ### REST APIs for Auth
